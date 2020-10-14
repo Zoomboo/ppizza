@@ -1,0 +1,13 @@
+<h1>123</h1>
+<h2>{{Order.FullCost}}</h2>
+<div ng-repeat="item in showcase">
+    {{item.Name}}
+    <span ng-if="!item.inCart"><button ng-click="Order.toCart(item)">Добавить</button></span>
+    <span ng-if="item.inCart">
+        <button ng-click="Order.toCart(item,false)">-</button>
+        <b>{{item.inCart}}</b>
+        <button ng-click="Order.toCart(item)">+</button>
+    </span>
+    <em>{{item.price}}</em>
+
+</div>
