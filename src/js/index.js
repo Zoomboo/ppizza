@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularroute from 'angular-route';
 import angularsanitize from 'angular-sanitize';
+import { getCountries, getStates, getCities } from 'cities-states-countries';
 import "regenerator-runtime/runtime";
 import moment from 'moment';
 import './../js/pizza_app.js';
@@ -8,3 +9,4 @@ import './../js/routs.js';
 import './../js/catalog.js';
 import './../js/items.js';
 import './../js/order.js';
+import './../js/userlogin.js';

@@ -1,0 +1,23 @@
+<h1>Заказ</h1>
+
+<form name="checkoutform">
+
+    <div ng-repeat="(name,f) in Form">
+        <span ng-if="f.field=='input'">
+            <label for="f_{{$index}}">{{f.placeholder}}</label>
+            <input name="{{f.name}}" minlength="{{f.minLength}}" ng-required="f.req" id="f_{{$index}}"
+                placeholder="{{f.placeholder}}" type="{{f.type}}" ng-value="f.val" ng-model="f.val">
+            <b>{{f.error}}</b>
+        </span>
+        <span ng-if="f.field=='select'">
+            <select ng-change="Order.fromUpdate()" ng-required="f.req" ng-model="f.val" name={{f.name}}>
+                <option disabled value="">{{f.placeholder}}</option>
+                <option ng-repeat="g in f.options" ng-value="g">{{g}}</option>
+            </select>
+            <b>{{f.error}}</b>
+        </span>
+    </div>
+    <button ng-click="Order.Submit(checkoutform)">Send</button>
+</form>
+
+{{Order.info}}

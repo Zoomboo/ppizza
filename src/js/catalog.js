@@ -15,7 +15,6 @@ class Catalog {
         } catch (e) {
             throw (e);
         }
-        console.log(this.showcase);
     }
     setCurr(curr) {
         this.showcase.forEach(i => i.setPrice(curr))
