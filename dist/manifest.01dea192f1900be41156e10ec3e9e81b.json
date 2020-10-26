@@ -1,0 +1,44 @@
+{
+  "icons": [
+    {
+      "src": "/assets/icons/icon_512x512.1730da065179625758f7056c058c06bf.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_384x384.8221bbbbb77298f45f2fb0b8066e58b5.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_256x256.54396a5274fcdad98a017f754c23a019.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_192x192.6d48be15cd744c51b91a4b38909c35f8.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_128x128.698fba33896b9d055ac4b44672a5fb00.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon_96x96.f6470c39216bdab1cb3573384ce0673f.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "G-Pizza",
+  "short_name": "G-Pizza",
+  "orientation": "portrait",
+  "display": "fullscreen",
+  "start_url": "/",
+  "description": "G-Pizza",
+  "version": 212,
+  "background_color": "#FAFAFA",
+  "theme_color": "#FFF",
+  "theme-color": "#FFF"
+}

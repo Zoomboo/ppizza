@@ -1,0 +1,41 @@
+<html ng-app="pizza">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFF" /><link rel="manifest" href="/manifest.01dea192f1900be41156e10ec3e9e81b.json" /></head>
+
+
+    <body>
+
+        <div ng-controller="pizzaapp">
+            <header class="sticky">
+                <div class="row">
+                    <div class="col-sm-0 col-md-1 col-lg-2"></div>
+                    <div class="col-sm-12 col-lg-8 col-md-10">
+                        <a href="/" class="logo"><strong>G-Pizza</strong></a>
+                        <currencies thiscurr="thiscurr" opts="Currencies" on-select="SetCurr">
+                        </currencies>
+                        <cart order="Order"></cart>
+                        <a ng-if="!User.id" class="" href="/login"><span class="icon-link"></span></a>
+                        <a ng-if="User.id" class="tooltip left" aria-label="Tooltip text" href="/history"><span
+                                class="icon-user"></span></a>
+
+                    </div>
+                    <div class="col-sm-0 col-md-1 col-lg-2"></div>
+                </div>
+
+            </header>
+            <div class="row">
+                <div class="col-sm-0 col-md-1 col-lg-2"></div>
+                <div class="col-sm-12 col-lg-8 col-md-10">
+                    <div class="container">
+                        <div ng-view=""></div>
+                    </div>
+                </div>
+                <div class="col-sm-0 col-md-1 col-lg-2"></div>
+            </div>
+        </div>
+
+    <script type="text/javascript" src="/app.bundle.js?v=212"></script></body>
+
+</html>

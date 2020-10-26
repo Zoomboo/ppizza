@@ -1,0 +1,17 @@
+<h1><strong>History</strong></h1>
+<p>
+    <button class="small" ng-click="LogOut()">Logout</button>
+</p>
+<div class="card fluid" ng-repeat="order in History">
+    <div class="section">
+        <h4><strong>Order #{{order.id}}</strong></h4>
+    </div>
+    <div ng-repeat="item in order.cart" class="row section">
+        <div class="col-sm-9">{{item.title}} x {{item.qua}} </div>
+        <div class="col-sm-3">{{item.cost.toFixed(2)}} <sup>{{order.currency}}</sup></div>
+    </div>
+    <div class="row section dark">
+        <div class="col-sm-9"><strong>Total:</strong></div>
+        <div class="col-sm-3"><strong>{{order.fullCost.toFixed(2)}} <sup>{{order.currency}}</sup></strong></div>
+    </div>
+</div>

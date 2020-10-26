@@ -17,6 +17,8 @@
     "angular-route": "^1.8.1",
     "angular-sanitize": "^1.8.1",
     "cities-states-countries": "0.0.4",
+    "materialize-css": "^1.0.0-rc.2",
+    "mini.css": "^3.0.1",
     "moment": "^2.29.1"
   },
   "devDependencies": {

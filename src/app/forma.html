@@ -1,0 +1,61 @@
+<form name="{{form.name}}">
+    <div class="row">
+        <div ng-repeat="(name,f) in form.Form" ng-class="f.wclass">
+            <span ng-if="f.field=='input'">
+                <div ng-if="f.type!='checkbox'&&f.type!='radio'" class="input-group vertical">
+                    <label for="f_{{$index}}">{{f.label||f.placeholder}}:</label>
+                    <input ng-if="f.minLength" name="{{f.name}}" ng-minlength="{{f.minLength}}" ng-required="f.req"
+                        id="f_{{$index}}" placeholder="{{f.placeholder}}" type="{{f.type}}" ng-model="f.val">
+                    <input ng-if="!f.minLength" name="{{f.name}}" ng-required="f.req" id="f_{{$index}}"
+                        placeholder="{{f.placeholder}}" type="{{f.type}}" ng-model="f.val">
+                </div>
+                <div ng-if="f.type=='checkbox'||f.type=='radio'">
+                    <span ng-if="!f.options.length">
+                        <label for="f_{{$index}}">{{f.label||f.placeholder}}:</label>
+                        <input ng-change="form.formUpdate()" name="{{f.name}}" ng-required="f.req" id="f_{{$index}}"
+                            placeholder="{{f.placeholder}}" type="{{f.type}}" ng-model="f.val">
+                    </span>
+                    <span ng-if="f.options.length">
+                        <h3>{{f.label||f.placeholder}}</h3>
+                        <div class="section" ng-repeat="opt in f.options">
+                            <label for="opt_{{$index}}">{{opt.name}}:</label>
+                            <input ng-change="form.formUpdate()" name="{{f.name}}" ng-required="f.req"
+                                id="opt_{{$index}}" ng-value="opt.val" type="{{f.type}}" ng-model="f.val">
+                        </div>
+                    </span>
+                </div>
+                <small class="error">{{f.error}}</small>
+            </span>
+            <span ng-if="f.field=='select'">
+                <label for="f_{{$index}}">{{f.label||f.placeholder}}:</label>
+                <select id="f_{{$index}}" ng-change="form.formUpdate()" ng-required="f.req" ng-model="f.val"
+                    name={{f.name}}>
+                    <option disabled value="">{{f.placeholder}}</option>
+                    <option ng-repeat="g in f.options" ng-value="g">{{g}}</option>
+                </select>
+                <small class="error">{{f.error}}</small>
+            </span>
+            <span ng-if="f.field=='textarea'">
+                <div class="input-group vertical">
+                    <label for="f_{{$index}}">{{f.label||f.placeholder}}:</label>
+                    <textarea id="f_{{$index}}" ng-model="f.val" ng-required="f.req" ng-minlength="{{f.minLength}}"
+                        name="{{f.name}}" cols="30" rows="5">
+                        {{f.val}}
+                    </textarea>
+                    <small class="error right">{{f.error}}</small>
+                </div>
+            </span>
+            <span ng-if="f.field=='button'">
+                <span ng-if="form.message" class="message">{{form.message}}</span>
+                <span ng-if="form.errors.length" class="message">
+                    <span ng-repeat="err in form.errors">{{err}}</span>
+                </span>
+                <button ng-class="f.class" ng-click="onSubmit(this[form.name])"
+                    ng-bind="f.placeholder||'Send'"></button>
+            </span>
+            <span ng-if="f.field=='link'">
+                <a href="{{f.href}}" ng-class="f.class" ng-bind="f.placeholder||'Send'"></a>
+            </span>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+<div class="card fluid warning">
+    <h3>Your order <strong>#{{neworder.id}}</strong> created!</h3>
+    <div class="section">
+        <p><strong>{{neworder.info.name}}</strong> </p>
+        <p><small>{{neworder.info.adress}}</small></p>
+
+
+        <p><small>Created At: {{neworder.created_at}}</small></p>
+        <p><small class="right">{{neworder.info.email}}</small></p>
+
+
+    </div>
+    <div ng-repeat="item in neworder.cart" class="section row">
+        <div class="col-sm-9"><strong>{{item.title}}</strong> x {{item.qua}} </div>
+        <div class="col-sm-3">{{item.cost.toFixed(2)}} <sup>{{neworder.currency}}</sup></div>
+    </div>
+    <div class="section dark row">
+        <div class="col-sm-7">
+            <p><strong>{{neworder.fullCost.toFixed(2)}}</strong> <sup>{{neworder.currency}}</sup></p>
+
+            <p>Delivery: <strong>{{neworder.deliveryCost}}</strong> <sup>{{neworder.currency}}</sup></p>
+
+        </div>
+        <div class="col-sm-5">
+            <h2><strong>{{(+neworder.deliveryCost + +neworder.fullCost).toFixed(2)}}</strong>
+                <sup>{{neworder.currency}}</sup></h2>
+        </div>
+    </div>
+</div>

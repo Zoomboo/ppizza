@@ -1,13 +1,24 @@
-<h1>123</h1>
-<h2>{{Order.FullCost}}</h2>
-<div ng-repeat="item in showcase">
-    {{item.Name}}
-    <span ng-if="!item.inCart"><button ng-click="Order.toCart(item)">Добавить</button></span>
-    <span ng-if="item.inCart">
-        <button ng-click="Order.toCart(item,false)">-</button>
-        <b>{{item.inCart}}</b>
-        <button ng-click="Order.toCart(item)">+</button>
-    </span>
-    <em>{{item.price}}</em>
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-4" ng-repeat="item in showcase">
+        <div class="card shadowed fluid">
+            <div class="section">
 
+                <h3>{{item.Name}}</h3>
+                <p>{{item.Description}}</p>
+
+
+            </div>
+            <img src="{{item.img}}" class="section media" alt="">
+            <div class="section dark prices">
+                <span ng-if="!Order.cart[item.id]"><button class="tertiary bordered"
+                        ng-click="Order.toCart(item)">Choose</button></span>
+                <span ng-if="Order.cart[item.id]">
+                    <button ng-click="Order.toCart(item,false)">-</button>
+                    <b>{{Order.cart[item.id].qty}}</b>
+                    <button ng-click="Order.toCart(item)">+</button>
+                </span>
+                <span class="prices">From <b>{{item.price}} <sup>{{thiscurr}}</sup></b> </span>
+            </div>
+        </div>
+    </div>
 </div>

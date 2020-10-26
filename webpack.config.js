@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-//const WebpackPwaManifest = require('webpack-pwa-manifest');
-const PUBLIC_PATH = 'https://ppizza.ddm24.ru/';
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const PUBLIC_PATH = '/';
 const VERSION = 212
 
 const {
@@ -66,8 +66,7 @@ module.exports = {
 
         new CleanWebpackPlugin,
         new HtmlWebpackPlugin({
-            title: 'Пив&Ко|Инвест',
-            title: 'Progressive Web Application',
+            title: 'Pizza App',
             template: './src/index.html'
         }),
 
@@ -79,22 +78,22 @@ module.exports = {
             navigateFallback: PUBLIC_PATH + 'index.html',
             staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
         }),
-        /*   new WebpackPwaManifest({
-              name: 'Пивзавоз СКЛАД',
-              short_name: 'Пивзавоз СКЛАД',
-              description: 'Пивзавоз СКЛАД',
-              display: "standalone",
-              version: VERSION,
-              background_color: '#FAFAFA',
-              theme_color: '#FFF',
-              'theme-color': '#FFF',
-              start_url: '/',
-              icons: [{
-                  src: path.resolve('src/img/logo2.png'),
-                  sizes: [96, 128, 192, 256, 384, 512],
-                  destination: path.join('assets', 'icons')
-              }]
-          }), */
+        new WebpackPwaManifest({
+            name: 'G-Pizza',
+            short_name: 'G-Pizza',
+            description: 'G-Pizza',
+            display: "fullscreen",
+            version: VERSION,
+            background_color: '#FAFAFA',
+            theme_color: '#FFF',
+            'theme-color': '#FFF',
+            start_url: '/',
+            icons: [{
+                src: path.resolve('src/img/logo2.png'),
+                sizes: [96, 128, 192, 256, 384, 512],
+                destination: path.join('assets', 'icons')
+            }]
+        }),
     ],
     output: {
         filename: '[name].bundle.js?v=' + VERSION,

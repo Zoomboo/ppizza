@@ -1,11 +1,32 @@
 <html ng-app="pizza">
 
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+    <div class="preloader" style="position: absolute;top:0;left:0;width:100vw;height: 100vh;background-color:#f8f8f8;">
+        <div style="max-width:1220px;width:100%;margin:auto;display:block">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+            <img style="width:100%;max-width:400px ;" src="../src/img/zloader.svg">
+        </div>
+    </div>
 
-    <body ng-controller="pizzaapp">
-        <div ng-view=""></div>
+    <body>
+        <div ng-controller="pizzaapp">
+            <mheader></mheader>
+            <div class="row">
+                <div class="col-sm-0 col-md-1 col-lg-2"></div>
+                <div class="col-sm-12 col-lg-8 col-md-10">
+                    <div class="container">
+                        <div ng-view=""></div>
+                    </div>
+                </div>
+                <div class="col-sm-0 col-md-1 col-lg-2"></div>
+            </div>
+        </div>
     </body>
 
 </html>

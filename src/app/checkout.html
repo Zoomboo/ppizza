@@ -1,23 +1,43 @@
-<h1>Заказ</h1>
+<h1><strong>Checkout</strong></h1>
+<div ng-if="!Order.allItems" class="card fluid double-padded">
+    <h3>Your cart is empty.</h3>
+</div>
 
-<form name="checkoutform">
+<messge ng-if="Order.neworder.id &&!Order.allItems " neworder="Order.neworder"> </messge>
 
-    <div ng-repeat="(name,f) in Form">
-        <span ng-if="f.field=='input'">
-            <label for="f_{{$index}}">{{f.placeholder}}</label>
-            <input name="{{f.name}}" minlength="{{f.minLength}}" ng-required="f.req" id="f_{{$index}}"
-                placeholder="{{f.placeholder}}" type="{{f.type}}" ng-value="f.val" ng-model="f.val">
-            <b>{{f.error}}</b>
-        </span>
-        <span ng-if="f.field=='select'">
-            <select ng-change="Order.fromUpdate()" ng-required="f.req" ng-model="f.val" name={{f.name}}>
-                <option disabled value="">{{f.placeholder}}</option>
-                <option ng-repeat="g in f.options" ng-value="g">{{g}}</option>
-            </select>
-            <b>{{f.error}}</b>
-        </span>
+
+
+<div ng-if="Order.allItems" class="card fluid">
+    <div ng-repeat="(ndx,item) in Order.cart" class="section">
+        <div class="row">
+            <div class="col-sm col-lg-1"><img src="{{item.item.img}}" class="section media"></div>
+            <div class="col-sm-5 col-lg-5">
+                <h4>{{item.item.Name}}</h4>
+                <span ng-if="Order.cart[item.item.id]">
+                    <button class="small " ng-click="Order.toCart(item.item,false)">-</button>
+                    <b>{{Order.cart[item.item.id].qty}}</b>
+                    <button class="small " ng-click="Order.toCart(item.item)">+</button>
+                </span>
+            </div>
+            <div class="col-sm pcost">
+                <b>{{item.pcost}}<sup> {{Order.Currency}}</sup></b>
+            </div>
+            <div class="col-sm">
+                <h3 class="right delete" ng-click="Order.delItem(item.item)">&times;</h3>
+            </div>
+        </div>
     </div>
-    <button ng-click="Order.Submit(checkoutform)">Send</button>
-</form>
+    <div class="section dark row">
+        <div class="col-sm-6">
+            <p><strong>{{Order.FullCost}}</strong> <sup>{{Order.Currency}}</sup></p>
 
-{{Order.info}}
+            <p class="nowrapped">Delivery: <strong>{{Order.deliveryCost}}</strong> <sup>{{Order.Currency}}</sup></p>
+
+        </div>
+        <div class="col-sm-6">
+            <h2><strong>{{Order.Total}}</strong> <sup>{{Order.Currency}}</sup></h2>
+        </div>
+
+    </div>
+    <forma form="checkoutform" on-submit="CheckoutFormSubmit"></forma>
+</div>
